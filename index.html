@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulScroll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Card Container */
+        .container {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Inputs */
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #6a11cb;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Result Display */
+        #result {
+            margin-top: 25px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #2575fc;
+        }
+
+        /* Responsive */
+        @media(max-width: 400px) {
+            .container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MindfulScroll</h1>
+    <p>Check if your social media usage is intentional or mindless scrolling.</p>
+
+    <input type="number" id="time" placeholder="Time spent (minutes)">
+    <input type="number" id="scroll" placeholder="Scroll count">
+    <input type="number" id="switch" placeholder="App switches">
+
+    <button onclick="analyze()">Analyze</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+    // AI logic translated to JavaScript
+    function predictUsage(time_spent, scroll_count, app_switches) {
+        // Simple rule-based AI logic simulating your Logistic Regression
+        if ((time_spent > 15 && scroll_count > 50) || app_switches > 5) {
+            return "Mindless Scrolling ⚠️";
+        }
+        return "Intentional Usage ✅";
+    }
+
+    function analyze() {
+        const time = parseInt(document.getElementById("time").value);
+        const scroll = parseInt(document.getElementById("scroll").value);
+        const switches = parseInt(document.getElementById("switch").value);
+
+        if (isNaN(time) || isNaN(scroll) || isNaN(switches)) {
+            document.getElementById("result").innerText = "Please fill in all fields!";
+            return;
+        }
+
+        const result = predictUsage(time, scroll, switches);
+        document.getElementById("result").innerText = result;
+    }
+</script>
+
+</body>
+</html>
